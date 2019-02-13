@@ -1,0 +1,173 @@
+<script>
+    var a = 10;
+    var a = 20;
+    const log = console.log;
+    let b = 10;
+    const c = ["A", "B", "C"];
+    c.push("d");
+    console.log(c);
+
+    for (let i = 1; i < 10; i++) {
+        console.log(i);
+    }
+
+    const fn = function (x, y) {
+        return x + y;
+    }
+    const fn2 = (x, y) => {
+        return x + y;
+    }
+    const fn3 = (x, y) => (x + y);
+    log(fn3(2, 10));
+
+    // ES5
+    function sum(v1,v2) {
+        v2 = v2 || 100;
+        return v1 + v2;
+    }
+    log(sum(10,20));
+    log(sum(10));
+
+    // ES6
+    function sum2(v1=100, v2=200) {
+        return v1 + v2;
+    }
+    log(sum2(10,20));
+    log(sum2(10));
+
+    function sum3(...v) {
+        var sum = 0;
+        for(var i=0; i<v.length; i++) {
+            sum += v[i];
+        }
+        return sum;
+    }
+    log(sum3(1,2,3,4,5,6,7,8,9,10));
+
+    var pre = [1,2,3];
+    var newPre = [1,2,3,4,...pre,7,8,9];
+    log(newPre);
+
+    //Strings
+    var str = "2019-02-11 12:33:34";
+    log(str.substr(2, 8));
+
+    var str = "Hello world";
+    var chkStr = "He";
+    log(str.startsWith(chkStr));
+    log(str.endsWith(chkStr));
+    log(str.includes(chkStr));
+
+    // Class
+    // ES5
+    var Human = (function () {
+        function Human(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Human.prototype.getName = function () {
+            return this.name;
+        }
+        Human.prototype.setName = function (name) {
+            this.name = name;
+        }
+        return Human;
+    }());
+    var hong = new Human("홍길동", 25);
+    hong.setName("홍길순")
+    log(hong.getName());
+
+    // ES6
+    class Human2 {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        getName() {
+            return this.name;
+        }
+        setName(name) {
+            this.name = name;
+        }
+        showInfo() {
+            console.log('${this.name}의 나이는 ${this.age}세 입니다.');
+        }
+    }
+    var hong2 = new Human2("홍길동", 30);
+    hong2.showInfo();
+
+    //Object
+    var name = "홍길동",
+        age = 25;
+    var obj = {
+        name, //name: name
+        age
+    };
+
+    var json = {
+        datas: [
+            {
+             "name": "홍길동",
+             "age": 25
+             
+            },
+            {
+             "name": "홍길순",
+             "age": 30
+             
+            },
+            {
+             "name": "홍길만",
+             "age": 30
+             
+            }
+
+        ]
+
+    };
+var [,,cc] = json.datas;
+log(cc);
+log(cc.name);
+
+// set 객체
+var set = new Set();
+log(set);
+set.add('A');
+set.add('B');
+set.add(()=>{});
+set.add('A');
+set.add('B');
+log(set, set.size);
+
+// WeakSet
+var set2 = new WeakSet();
+set2.add(()=>{});
+set2.add({});
+log(set2);
+
+// Map
+var map = new Map();
+map.set(0, "영");
+map.set('A', "String A");
+map.set(()=>{}, "String A");
+
+var arr = ['A','B','C'];
+var arrN = [1,2,3];
+//console.clear();
+Array.prototype.getMin = function(){};
+Array.prototype.getMax = function(){};
+for(var i in arr) {
+    log(i, arr[i]);
+}
+for(var [k,v] of map) {
+    log(k,v);
+}
+arr.forEach(function(k,v){
+  log(k,v);  
+});
+var k = map.get('A');
+log(k);
+log(map.keys());
+log(map.values());
+log(map.has('A'));
+</script>
